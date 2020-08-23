@@ -61,7 +61,7 @@ class Connector(object):
         """ Adds a URL's into a list of tasks and requests their response asynchronously. """
 
         async_tasks = []
-        conn = aiohttp.TCPConnector(limit_per_host=connection_settings['CONCURRENT_CONNECTIONS'])
+        conn = aiohttp.TCPConnector(limit_per_host=connection_settings['CONCURRENT_CONNECTIONS'], verify_ssl=False)
         timeout = aiohttp.ClientTimeout(total=connection_settings['CONNECTION_TIMEOUT'])
 
         async with aiohttp.ClientSession(connector=conn,
